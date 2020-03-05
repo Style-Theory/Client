@@ -2,7 +2,7 @@ $("document").ready(() => {
     const token = localStorage.token
     if(token) {
         $("#login-page").hide()
-        $('.navbar').hide()
+        $('.navbar1').hide()
         $('main').hide()
         $("#login-btn-signup").on('click', (e) => {
             e.preventDefault()
@@ -14,9 +14,10 @@ $("document").ready(() => {
             $("#login-page").slideUp()
         })
     } else {
-        $('main').show()
+        $("#dashboard-home-page").hide()
+        $('#my-stuff').show()
         $("#login-page").hide()
-        $('.navbar').show()
+        $('.navbar1').show()
         $('#landing-page').hide()
     }
     
