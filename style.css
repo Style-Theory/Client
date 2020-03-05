@@ -18,15 +18,68 @@ body {
 .navbar {
     position: fixed;
     background-color: var(--bg-primary);
-    transition: width 600ms ease;
+    height: 100vh;
+    width: 7rem;
+    transition: width 500ms ease;
 }
 
-.navbar-nav {
+.navbar-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+}
+
+.navbar-item {
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+.navbar-item:last-child {
+    margin-top: auto;
+}
+
+.navbar-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
+}
+
+.navbar-link:hover {
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.link-text {
+    display: none;
+    margin: 0 1.5rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+i {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.navbar:hover {
+    width: 16rem;
+}
+
+.navbar:hover .link-text {
+    display: block;
+}
+
+main {
+    margin-left: 8rem;
+    padding: 1rem;
 }
