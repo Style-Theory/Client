@@ -3,6 +3,7 @@ $("document").ready(() => {
     if(token) {
         $("#login-page").hide()
         $('.navbar').hide()
+        $('main').hide()
         $("#login-btn-signup").on('click', (e) => {
             e.preventDefault()
             $("#login-page").slideDown()
@@ -13,6 +14,7 @@ $("document").ready(() => {
             $("#login-page").slideUp()
         })
     } else {
+        $('main').show()
         $("#login-page").hide()
         $('.navbar').show()
         $('#landing-page').hide()
