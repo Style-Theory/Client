@@ -10,7 +10,7 @@
 
 body {
     color: black;
-    background-color: white;
+    background-color: rgb(252, 243, 231);
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -22,6 +22,7 @@ body {
     height: 100vh;
     width: 7rem;
     transition: width 500ms ease;
+    z-index: 1;
 }
 
 .navbar-list {
@@ -218,4 +219,68 @@ main {
     width: 45vw;
     height: 45vh;
     margin-top: 5vh;
+}
+
+#rent {
+    display: flex;
+    flex-direction: row;
+}
+
+#filter-div {
+    width: 10vw;
+    height: 100vh;
+    text-align: right;
+    color: black;
+    margin-top: 10rem;
+}
+
+#filter-title {
+font-size: 29px;
+font-family: 'Raleway', sans-serif;
+}
+
+
+
+#content-body-rent {
+    width: 80vw;
+    padding: 2rem;
+    padding-right: 0;
+}
+
+.clothe-name-card{
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.clothe-renter-card{
+    font-family: 'Spartan', sans-serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+.clothe-card{
+    margin-top: 1rem;
+    margin: 0;
+}
+.card:hover{
+    border-width: 2;
+    border-color: black;
+    transition: var(--transition-speed);
+    box-shadow: 2px 2px rgb(197, 197, 197);
+}
+
+.clothe-price-card{
+    font-family: sans-serif;
+    color: rgb(182, 182, 182);
+}
+
+#rent-title {
+    font-size: 60px;
+    font-family: 'Spartan', sans-serif;
+    margin-bottom: 4rem;
+}
+
+.container-clothe {
+    margin-bottom: 2rem;
 }
