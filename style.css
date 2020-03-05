@@ -17,6 +17,7 @@ body {
 }
 
 .navbar1 {
+    z-index: 2;
     position: fixed;
     background-color: var(--bg-primary);
     height: 100vh;
@@ -82,7 +83,7 @@ i {
 }
 
 main {
-    margin-left: 8rem;
+    margin-left: 6rem;
 }
 
 #landing-bg{
@@ -219,6 +220,13 @@ main {
     width: 45vw;
     height: 45vh;
     margin-top: 5vh;
+}
+
+
+.card-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: .5rem;
 }
 
 #rent {
