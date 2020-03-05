@@ -16,7 +16,8 @@ $("document").ready(() => {
             $("#login-page").slideUp()
         })
     } else {
-        
+        $('#name-home').empty()
+        $('#name-home').append(`${localStorage.name}`)
         $("#dashboard-home-page").show()
         $('#rent').hide()
         $('#my-order').hide()
@@ -102,6 +103,55 @@ $("document").ready(() => {
         })
             .done(login => {
                 localStorage.setItem('token', login.token)
+                localStorage.setItem('name', login.name)
+                $('#name-home').empty()
+                $('#name-home').append(`${localStorage.name}`)
+                $('main').show()
+                $('#rent').hide()
+                $('#my-order').hide()
+                $('#my-stuff').hide()
+                $("#login-page").hide()
+                $('.navbar1').show()
+                $('#landing-page').hide()
+                $("#dashboard-home-page").show()
+            })
+            .fail(err => {
+                $("#login-page").hide()
+                $('.navbar1').hide()
+                $('main').hide()
+                $('#rent').hide()
+                $('#my-order').hide()
+                $("#login-btn-signup").on('click', (e) => {
+                    e.preventDefault()
+                    $("#login-page").slideDown()
+                    $("#landing-page").css('filter', 'blur(3px)')
+                })
+                $("#xlogin").on('click', (e) => {  
+                    $("#landing-page").css('filter', '')
+                    $("#login-page").slideUp()
+                })
+            })
+    })
+
+    $('#form-register').on('submit', (e) => {
+        e.preventDefault()
+        const email = $('#signup-email').val()
+        const password = $('#signup-password').val()
+        const name = $('#signup-name').val()
+        $.ajax({
+            method: 'post',
+            url:'http://localhost:3000/register',
+            data: {
+                email,
+                password,
+                name
+            }
+        })
+            .done(register => {
+                localStorage.setItem('token', register.token)
+                localStorage.setItem('name', register.name)
+                $('#name-home').empty()
+                $('#name-home').append(`${localStorage.name}`)
                 $('main').show()
                 $('#rent').hide()
                 $('#my-order').hide()
