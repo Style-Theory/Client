@@ -16,7 +16,7 @@ body {
     min-height: 100%;
 }
 
-.navbar {
+.navbar1 {
     position: fixed;
     background-color: var(--bg-primary);
     height: 100vh;
@@ -72,17 +72,16 @@ i {
     margin: 0 1.5rem;
 }
 
-.navbar:hover {
+.navbar1:hover {
     width: 16rem;
 }
 
-.navbar:hover .link-text {
+.navbar1:hover .link-text {
     display: block;
 }
 
 main {
     margin-left: 8rem;
-    padding: 1rem;
 }
 
 #landing-bg{
@@ -192,4 +191,31 @@ main {
     top:3%;
     color: rgb(167, 166, 166);
     cursor: pointer;
+}
+
+#dashboard-home-page {
+    background-image: url('./img/home-bg.jpg');
+    width: auto;
+    height: 100vh;
+    background-size: cover;
+    padding: 5rem;
+}
+
+#welcome-back {
+    display: flex; 
+    flex-direction: row;
+    font-family: 'Spartan', sans-serif;
+    font-size:3rem;
+    margin-top: 8rem;
+}
+
+.welcome-back-child{
+    margin-right: 0.7rem;
+}
+
+.div-fashion-api {
+    background-color: black;
+    width: 45vw;
+    height: 45vh;
+    margin-top: 5vh;
 }
