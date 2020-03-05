@@ -32,7 +32,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    height: 100%;
 }
 
 .navbar-item {
@@ -187,6 +188,10 @@ main {
     text-align: center;
 }
 
+.navbar-item:last-child {
+    margin-top: auto
+}
+
 .x {
     position: relative;
     left: 95%;
@@ -215,11 +220,8 @@ main {
     margin-right: 0.7rem;
 }
 
-.div-fashion-api {
-    background-color: black;
-    width: 45vw;
-    height: 45vh;
-    margin-top: 5vh;
+#div-fashion-api {
+    margin-top: 1rem;
 }
 
 
@@ -246,7 +248,6 @@ main {
 font-size: 29px;
 font-family: 'Raleway', sans-serif;
 }
-
 
 
 #content-body-rent {
@@ -291,4 +292,41 @@ font-family: 'Raleway', sans-serif;
 
 .container-clothe {
     margin-bottom: 2rem;
+}
+
+.hnm-images{
+    width: 7rem;
+}
+
+.img-carousel {
+    object-fit: contain;
+}
+
+.carousel-news {
+    padding: 4rem;
+    background-color: rgba(223, 223, 223, 0.904);
+    word-wrap: break-word;
+    width: 20rem;
+}
+
+.hot-picks {
+    font-size: 25px;
+    margin-top: 3rem;
+    margin-left: 1rem;
+}
+
+#my-order {
+    padding: 2rem;
+}
+
+#my-order-title {
+    margin-bottom: 2rem;
+}
+
+#my-stuff {
+    padding: 2rem;
+}
+
+#my-stuff-title {
+    padding: 2rem;
 }
