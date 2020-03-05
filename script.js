@@ -69,6 +69,7 @@ $("document").ready(() => {
         $('#landing-page').hide()
     })
     $('#btn-navbar-logout').on('click', () => {
+        $("#landing-page").css('filter', '')
         localStorage.clear()
         $("#login-page").hide()
         $('.navbar1').hide()
@@ -86,7 +87,50 @@ $("document").ready(() => {
             $("#login-page").slideUp()
         })
     })
+
+    $('#form-login').on('submit', (e) => {
+        e.preventDefault()
+        const email = $('#login-email').val()
+        const password = $('#login-password').val()
+        $.ajax({
+            method: 'post',
+            url:'http://localhost:3000/login',
+            data: {
+                email,
+                password
+            }
+        })
+            .done(login => {
+                localStorage.setItem('token', login.token)
+                $('main').show()
+                $('#rent').hide()
+                $('#my-order').hide()
+                $('#my-stuff').hide()
+                $("#login-page").hide()
+                $('.navbar1').show()
+                $('#landing-page').hide()
+                $("#dashboard-home-page").show()
+            })
+            .fail(err => {
+                $("#login-page").hide()
+                $('.navbar1').hide()
+                $('main').hide()
+                $('#rent').hide()
+                $('#my-order').hide()
+                $("#login-btn-signup").on('click', (e) => {
+                    e.preventDefault()
+                    $("#login-page").slideDown()
+                    $("#landing-page").css('filter', 'blur(3px)')
+                })
+                $("#xlogin").on('click', (e) => {  
+                    $("#landing-page").css('filter', '')
+                    $("#login-page").slideUp()
+                })
+            })
+    })
 })
+
+
 
 function homeFashionNews(){
     let settings = {

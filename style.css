@@ -32,7 +32,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    height: 100%;
 }
 
 .navbar-item {
@@ -185,6 +186,10 @@ main {
     font-weight: bolder;
     font-size: 2.5rem;
     text-align: center;
+}
+
+.navbar-item:last-child {
+    margin-top: auto
 }
 
 .x {
