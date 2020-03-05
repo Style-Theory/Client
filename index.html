@@ -4,16 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Spartan&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Style Theory</title>
 </head>
 <body>
-    <nav class="navbar">
+    <section id="landing-page">
+        <div id="landing-bg"></div>
+        <div id="landing-content">
+                <h1 id="landing-title1" class="landing-title">STYLE</h1>
+                <h1 id="landing-title2" class="landing-title">THEORY.</h1>
+                <h2 id="landing-tagline">Walk in for the Fashion, Stay in for the Style</h2>
+                <div id="landing-register" class="rounded-right">
+                        <form id="register-form">
+                            <h1 id="register-title">Register Now!</h1>
+                            <div class="form-group">
+                                <label for="sign-up-email" class="register-label">Email :</label>
+                                <input type="email" class="form-control" id="sign-up-email" placeholder="fashionismylife@mail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-up-name" class="register-label">Your Name : </label>
+                                <input type="text" class="form-control" id="sign-up-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-up-password" class="register-label">Password :</label>
+                                <input type="password" class="form-control" id="sign-up-password">
+                            </div>
+                            <button type="submit" class="btn btn-warning" style="background-color: rgb(235, 212, 114); border-width: 0; cursor: pointer; margin-left: 0.5rem;">Register</button>
+                            <a id="login-btn-signup">Already have an account?</a>
+                        </form>
+                </div>
+        </div>
+    </section>
+
+    <section id="login-page">
+        <div id="login-form-div">
+            <p id="xlogin" class="x">x</p>
+            <form action="" style="margin: 0 50px 40px 40px;">
+                <h1 id="log-in-title">Log in</h1>
+                <div class="form-group">
+                        <label for="log-in-email" class="register-label">Email: </label>
+                        <input type="text" class="form-control" id="log-in-email">
+                </div>
+                <div class="form-group">
+                    <label for="log-in-password" class="register-label">Password :</label>
+                    <input type="password" class="form-control" id="log-in-password">
+                </div>
+                <button type="submit" class="btn btn-warning" style="background-color: rgb(235, 212, 114); border-width: 0; cursor: pointer; margin-left: 0.5rem;">Sign in</button>
+            </form>
+        </div>    
+    </section>
+
+
+
+    <!-- <nav class="navbar">
         <ul class="list">
 
         </ul>
-    </nav>
+    </nav> -->
 
-    <h1>test</h1>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
