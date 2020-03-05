@@ -309,3 +309,11 @@ font-family: 'Raleway', sans-serif;
     margin-top: 3rem;
     margin-left: 1rem;
 }
+
+#my-order {
+    padding: 2rem;
+}
+
+#my-order-title {
+    margin-bottom: 2rem;
+}
