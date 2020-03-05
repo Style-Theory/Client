@@ -16,6 +16,7 @@ $("document").ready(() => {
     } else {
         $("#dashboard-home-page").hide()
         $('#my-stuff').show()
+        $('#rent').hide()
         $("#login-page").hide()
         $('.navbar1').show()
         $('#landing-page').hide()
