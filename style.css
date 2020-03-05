@@ -13,6 +13,7 @@ body {
     background-color: white;
     margin: 0;
     padding: 0;
+    min-height: 100%;
 }
 
 .navbar {
@@ -29,7 +30,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center
 }
 
 .navbar-item {
@@ -82,4 +83,112 @@ i {
 main {
     margin-left: 8rem;
     padding: 1rem;
+}
+
+#landing-bg{
+    background-image: url('./img/landing-bg.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    filter: brightness(75%);
+    position: fixed;
+}
+
+#landing-page {
+    display: flex;
+    flex-direction: column;
+}
+
+#landing-content {
+    z-index: 1;
+    padding: 2rem 8rem;
+    padding-bottom: 0;
+    margin-top: 2rem
+}
+
+.landing-title {
+    color: white;
+    z-index: 1;
+    font-family: 'Spartan', sans-serif;
+    font-size: 6rem;
+    letter-spacing: 2rem;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+
+#landing-title2 {
+    margin-top: 0;
+}
+
+#landing-tagline {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 50;
+    letter-spacing: 0.2rem;
+    color: white;
+}
+
+#landing-register{
+    margin-top: 4rem;
+    background-color: rgb(252, 243, 231);
+    width: 60vw;
+    padding: 1rem 2rem;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 12px;
+}
+
+#register-title {
+    font-family: 'Spartan', sans-serif;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: bolder;
+}
+
+.register-label {
+    font-size: 20px;
+}
+
+#login-btn-signup {
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+#login-page {
+    left:25%;
+    top:25%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    z-index: 1;
+}
+
+#login-form-div {
+    width: 40vw;
+    background-color: rgb(252, 243, 231);
+    border-radius: 20px;
+    padding: 0 2rem;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    transition: var(--transition-speed);
+    padding: 10px;
+}
+
+#log-in-title {
+    font-family: 'Spartan', sans-serif;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: bolder;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.x {
+    position: relative;
+    left: 95%;
+    top:3%;
+    color: rgb(167, 166, 166);
+    cursor: pointer;
 }
