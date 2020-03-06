@@ -1,8 +1,9 @@
 $("document").ready(() => {
     const token = localStorage.token
-    if(token) {
+    if(!token) {
         $("#login-page").hide()
         $('.navbar1').hide()
+        $("#form-create-page").hide()
         $('main').hide()
         $('#rent').hide()
         $('#my-order').hide()
@@ -16,6 +17,8 @@ $("document").ready(() => {
             $("#login-page").slideUp()
         })
     } else {
+        $("#landing-page").css('filter', '')
+        $("#form-create-page").hide()
         $('#name-home').empty()
         $('#name-home').append(`${localStorage.name}`)
         $("#dashboard-home-page").show()
@@ -29,6 +32,7 @@ $("document").ready(() => {
 
     $('#btn-navbar-home').on('click', () => {
         $("#dashboard-home-page").show()
+        $("#form-create-page").hide()
         $('#rent').hide()
         $('#my-order').hide()
         $('#my-stuff').hide()
@@ -39,6 +43,7 @@ $("document").ready(() => {
 
     $('#btn-navbar-rent').on('click', () => {
         $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
         $('#rent').show()
         $('#my-order').hide()
         $('#my-stuff').hide()
@@ -48,7 +53,9 @@ $("document").ready(() => {
     })
 
     $('#btn-navbar-myStuff').on('click', () => {
+        $("#my-stuff").css('filter', '')
         $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
         $('#rent').hide()
         $('#my-order').hide()
         $('#my-stuff').show()
@@ -56,12 +63,22 @@ $("document").ready(() => {
         $("#login-page").hide()
         $('.navbar1').show()
         $('#landing-page').hide()
+        $("#create-btn").on('click', (e) => {
+            e.preventDefault()
+            $("#form-create-page").slideDown()
+            $("#my-stuff").css('filter', 'blur(3px)')
+        })
+        $("#xcreate").on('click', (e) => {  
+            $("#my-stuff").css('filter', '')
+            $("#form-create-page").slideUp()
+        })
     })
     
     homeFashionNews()
 
     $('#btn-navbar-myOrder').on('click', () => {
         $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
         $('#rent').hide()
         $('#my-order').show()
         $('#my-stuff').hide()
@@ -72,6 +89,7 @@ $("document").ready(() => {
     $('#btn-navbar-logout').on('click', () => {
         $("#landing-page").css('filter', '')
         localStorage.clear()
+        $("#form-create-page").hide()
         $("#login-page").hide()
         $('.navbar1').hide()
         $('main').hide()
