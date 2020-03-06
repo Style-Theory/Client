@@ -396,7 +396,7 @@ main {
 .my-stuff-config {
     display:flex; 
     flex-direction:column; 
-    margin-left:14rem
+    margin-left: 60%;
 }
 
 .btn-my-stuff {
