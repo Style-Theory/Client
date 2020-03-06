@@ -234,7 +234,7 @@ function homeFashionNews(){
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
-            "x-rapidapi-key": "9fcdc6e1fcmsh37e849b5cfc0c7ap1c02f4jsn1c3f4260cf85"
+            "x-rapidapi-key": "43c5fb0e77msh7fc347ec7391f95p19a3b2jsn0de9aad12afb"
         }
     }
     $.ajax(settings).done(function (response) {
