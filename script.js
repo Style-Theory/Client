@@ -1,4 +1,5 @@
 $("document").ready(() => {
+    let img;
     const token = localStorage.token
     if(!token) {
         $("#login-page").hide()
@@ -63,7 +64,6 @@ $("document").ready(() => {
         $('#landing-page').hide()
     })
 
-  
     $('#btn-navbar-myStuff').on('click', (e) => {
         e.preventDefault()
         $("#my-stuff").empty()
@@ -91,7 +91,6 @@ $("document").ready(() => {
         })
     })
     
-
     $('#btn-navbar-myOrder').on('click', (e) => {
         e.preventDefault()
         $("#dashboard-home-page").hide()
@@ -221,8 +220,49 @@ $("document").ready(() => {
                 })
             })
     })
-})
 
+    $('input[type=file]').on("change", function() {
+
+        let $files = $(this).get(0).files;
+    
+        if ($files.length) {
+          var apiUrl = 'https://api.imgur.com/3/image';
+          var apiKey = '7122fd47f342787';
+    
+            settings = {
+                async: false,
+                crossDomain: true,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                url: apiUrl,
+                headers: {
+                Authorization: 'Client-ID ' + apiKey,
+                Accept: 'application/json'
+                },
+                mimeType: 'multipart/form-data'
+            };
+    
+        var formData = new FormData();
+        formData.append("image", $files[0]);
+        settings.data = formData;
+          $.ajax(settings).done(function(response) {
+            response = JSON.parse(response)
+            img = response.data.id
+          });
+    
+        }
+    });
+
+    $('#form-create').on('submit', (e) => {
+        e.preventDefault()
+        const name = $('#name-create').val()
+        const price = $('#price-create').val()
+        const image = img
+        createRent({ name, price, image })
+    })
+
+})
 
 
 function homeFashionNews(){
@@ -263,6 +303,51 @@ function homeFashionNews(){
     });
     
 }
+
+function createRent(data) {
+    $.ajax({
+        url: 'http://localhost:3000/',
+        method: 'POST',
+        headers: {
+                token: localStorage.token
+        },
+        data: {
+            name: data.name,
+            price: data.price,
+            photos: data.image
+        }
+    })
+    .done(result => {
+        console.log('masuk')
+        $("#my-stuff").empty()
+        $("#my-stuff").css('filter', '')
+        fetchMyStuff()
+        $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
+        $('#rent').hide()
+        $('#my-order').hide()
+        $("#my-order").empty()
+        $('#my-stuff').show()
+        $('#rent').hide()
+        $("#login-page").hide()
+        $('.navbar1').show()
+        $("#content-body-rent").empty()
+        $('#landing-page').hide()
+        $("#create-btn").on('click', (e) => {
+            e.preventDefault()
+            $("#form-create-page").slideDown()
+            $("#my-stuff").css('filter', 'blur(3px)')
+        })
+        $("#xcreate").on('click', (e) => {  
+            $("#my-stuff").css('filter', '')
+            $("#form-create-page").slideUp()
+        })
+    })
+    .fail(err => {
+        console.log(err)
+    })
+}
+
 
 function fetchDress(){
     $.ajax({
@@ -307,7 +392,7 @@ function fetchMyStuff(){
         let results = {
             data : [1,2,3,4,5,6,7,8]
         }
-        $("#my-stuff").append('<h1 id="my-stuff-title">My Stuff</h1>')
+        $("#my-stuff").append(`<h1 id="my-stuff-title">My Stuff</h1> <button type="button" id="create-btn" class="btn btn-light" style="margin-left: 1rem;">Add Stuff</button><br><br>`)
                 for(let i = 0; i < results.data.length/3; i++){
                 $("#my-stuff").append(`<div class="container" style="margin: 0;"><div class="row" style="width:80vw" id="row-my-stuff-${i}"></div></div>`)
                     for(let j = i*3; j < (i+1)*3; j++){
