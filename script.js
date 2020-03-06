@@ -1,6 +1,6 @@
 $("document").ready(() => {
     const token = localStorage.token
-    if(token) {
+    if(!token) {
         $("#login-page").hide()
         $('.navbar1').hide()
         $('main').hide()
@@ -91,9 +91,10 @@ $("document").ready(() => {
     })
     $('#btn-navbar-logout').on('click', (e) => {
         e.preventDefault()
+        resetLandingPage ()
         $("#my-stuff").empty()
+        signOut()
         $("#content-body-rent").empty()
-        $("#landing-page").css('filter', '')
         localStorage.clear()
         $("#login-page").hide()
         $('.navbar1').hide()
@@ -218,7 +219,6 @@ function homeFashionNews(){
         }
     }
     $.ajax(settings).done(function (response) {
-        console.log(response)
         for(let i = 0; i < response.results.length; i++){
             if(i == 1){
                 $(".carousel-inner").append(`<div class="carousel-item active">
@@ -249,6 +249,9 @@ function fetchDress(){
     $.ajax({
         url: 'http://localhost:3000/',
         method:'GET',
+        headers:{
+            token: localStorage.getItem('token')
+        }
     })
     .done(results => {
         $("#content-body-rent").append('<h2 id="rent-title"> View All</h2>')
@@ -279,15 +282,14 @@ function fetchDress(){
 }
 
 function fetchMyStuff(){
-    // $.ajax({
-    //     url: 'http://localhost:3000/',
-    //     method:'GET',
-    // })
-    // .done(results => {
-        //SEMENTARA
-        let results = {
-            data : [1,2,3,4,5,6,7,8]
+    $.ajax({
+        url: 'http://localhost:3000/mystuff',
+        method:'GET',
+        headers:{
+            token: localStorage.getItem('token')
         }
+    })
+    .done(results => {
         $("#my-stuff").append('<h1 id="my-stuff-title">My Stuff</h1>')
                 for(let i = 0; i < results.data.length/3; i++){
                 $("#my-stuff").append(`<div class="container" style="margin: 0;"><div class="row" style="width:80vw" id="row-my-stuff-${i}"></div></div>`)
@@ -309,8 +311,8 @@ function fetchMyStuff(){
                                 <div class="col-md-5">
                                     <div class="card-body my-stuff-desc">
                                         <div>
-                                            <h5 class="card-title">Dress</h5>
-                                            <p class="card-text">harga</p>
+                                            <h5 class="card-title">${results.data[j].name}</h5>
+                                            <p class="card-text">Rp. ${parsePrice(results.data[j].price)}</p>
                                         </div>
                                         <div class="my-stuff-config">
                                             <button type="button" class="btn btn-light btn-my-stuff">Edit</button>
@@ -324,19 +326,18 @@ function fetchMyStuff(){
                     }
                 }
             }
-        // })
+        })
 }
 
 function fetchMyOrder(){
-    // $.ajax({
-    //     url: 'http://localhost:3000/',
-    //     method:'GET',
-    // })
-    // .done(results => {
-        //SEMENTARA
-        let results = {
-            data : [1,2,3,4,5,6,7,8]
+    $.ajax({
+        url: 'http://localhost:3000/myorder',
+        method:'GET',
+        headers:{
+            token: localStorage.getItem('token')
         }
+    })
+    .done(results => {
         $("#my-order").append('<h1 id="my-order-title">My Order</h1>')
                 for(let i = 0; i < results.data.length/3; i++){
                 $("#my-order").append(`<div class="container" style="margin: 0;"><div class="row" style="width:80vw" id="row-my-order-${i}"></div></div>`)
@@ -378,7 +379,7 @@ function fetchMyOrder(){
                     }
                 }
             }
-        // })
+        })
 }
 
 function parsePrice(priceInt){
@@ -392,4 +393,45 @@ function parsePrice(priceInt){
         }
     }
     return priceReturn
+}
+
+function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    $.ajax({
+        url: 'http://localhost:3000/loginGoogle',
+        method: 'POST',
+        data: {
+            id_token
+        }
+    })
+    .then(res => {
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('name', res.name)
+        $('#name-home').empty()
+        $('#name-home').append(`${localStorage.name}`)
+        $('main').show()
+        $('#rent').hide()
+        $('#my-order').hide()
+        $('#my-stuff').hide()
+        $("#login-page").hide()
+        $('.navbar1').show()
+        $('#landing-page').hide()
+        $("#dashboard-home-page").show()
+    })
+  }
+
+function signOut() {
+var auth2 = gapi.auth2.getAuthInstance();
+auth2.signOut().then(function () {
+    console.log('User signed out.');
+});
+}
+
+function resetLandingPage (){
+    $("#signup-email").val('')
+    $("#signup-name").val('')
+    $("#signup-password").val('')
+    $("#log-in-email").val('')
+    $("#login-password").val('')
+    $("#landing-page").css('filter', '')    
 }
