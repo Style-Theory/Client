@@ -1,8 +1,9 @@
 $("document").ready(() => {
     const token = localStorage.token
-    if(token) {
+    if(!token) {
         $("#login-page").hide()
         $('.navbar1').hide()
+        $("#form-create-page").hide()
         $('main').hide()
         $('#rent').hide()
         $('#my-order').hide()
@@ -17,6 +18,8 @@ $("document").ready(() => {
             $("#login-page").slideUp()
         })
     } else {
+        $("#landing-page").css('filter', '')
+        $("#form-create-page").hide()
         $('#name-home').empty()
         $('#name-home').append(`${localStorage.name}`)
         $("#dashboard-home-page").show()
@@ -32,6 +35,7 @@ $("document").ready(() => {
     $('#btn-navbar-home').on('click', (e) => {
         e.preventDefault()
         $("#dashboard-home-page").show()
+        $("#form-create-page").hide()
         $("#my-stuff").empty()
         $('#rent').hide()
         $("#my-order").empty()
@@ -49,6 +53,7 @@ $("document").ready(() => {
         $("#my-stuff").empty()
         $("#my-order").empty()
         $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
         $('#rent').show()
         $('#my-order').hide()
         $("#content-body-rent").empty()
@@ -58,11 +63,14 @@ $("document").ready(() => {
         $('#landing-page').hide()
     })
 
+  
     $('#btn-navbar-myStuff').on('click', (e) => {
         e.preventDefault()
         $("#my-stuff").empty()
+        $("#my-stuff").css('filter', '')
         fetchMyStuff()
         $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
         $('#rent').hide()
         $('#my-order').hide()
         $("#my-order").empty()
@@ -72,12 +80,22 @@ $("document").ready(() => {
         $('.navbar1').show()
         $("#content-body-rent").empty()
         $('#landing-page').hide()
+        $("#create-btn").on('click', (e) => {
+            e.preventDefault()
+            $("#form-create-page").slideDown()
+            $("#my-stuff").css('filter', 'blur(3px)')
+        })
+        $("#xcreate").on('click', (e) => {  
+            $("#my-stuff").css('filter', '')
+            $("#form-create-page").slideUp()
+        })
     })
     
 
     $('#btn-navbar-myOrder').on('click', (e) => {
         e.preventDefault()
         $("#dashboard-home-page").hide()
+        $("#form-create-page").hide()
         $("#my-stuff").empty()
         $("#my-order").empty()
         $('#rent').hide()
@@ -95,6 +113,7 @@ $("document").ready(() => {
         $("#content-body-rent").empty()
         $("#landing-page").css('filter', '')
         localStorage.clear()
+        $("#form-create-page").hide()
         $("#login-page").hide()
         $('.navbar1').hide()
         $('main').hide()
