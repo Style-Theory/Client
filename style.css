@@ -381,7 +381,7 @@ main {
     font-size: 2.5rem;
     text-align: center;
 }
-  
+
 .loading {
     position: fixed;
     bottom:40%;
@@ -409,4 +409,37 @@ main {
     align-items: center;
     justify-content: center;
     margin-left: 6px;
+}
+
+.form-edit-page {
+    left:25%;
+    top:25%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    z-index: 1;
+    display: none;
+}
+
+.edit-form-div {
+    width: 40vw;
+    background-color: rgb(56, 56, 56);
+    color: silver;
+    border-radius: 20px;
+    padding: 0 2rem;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    transition: var(--transition-speed);
+    padding: 10px;
+}
+
+.edit-title {
+    font-family: 'Spartan', sans-serif;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: bolder;
+    font-size: 2.5rem;
+    text-align: center;
 }
