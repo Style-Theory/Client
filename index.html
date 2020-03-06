@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/ffa71933bb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+    <meta name="google-signin-client_id" content="1003100472504-263q69ga350fv85bq6bs5hatear93da6.apps.googleusercontent.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Style Theory</title>
+</head>
+<body>
+    <nav class="navbar1">
+        <ul class="navbar-list">
+            <li class="navbar-item">
+                <a href="#" id="btn-navbar-home" class="navbar-link" style="text-decoration: none;">
+                    <i class="fas fa-home fa-2x"></i>
+                    <span class="link-text">Home</span>
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" id="btn-navbar-rent" class="navbar-link" style="text-decoration: none;">
+                    <i class="fa fa-store fa-2x"></i>
+                    <span class="link-text">Rent</span>
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" id="btn-navbar-myStuff" class="navbar-link" style="text-decoration: none;">
+                    <i class="fa fa-tshirt fa-2x"></i>
+                    <span class="link-text">My Stuff</span>
+                </a>
+            </li>
+
+            <li class="navbar-item">
+                <a href="#" id="btn-navbar-myOrder" class="navbar-link" style="text-decoration: none;">
+                    <i class="fa fa-shopping-basket fa-2x"></i>
+                    <span class="link-text">My Rent</span>
+                </a>
+            </li>
+
+            <li class="navbar-item">
+                <a href="#" id="btn-navbar-logout" class="navbar-link" style="text-decoration: none;">
+                    <i class="fa fa-sign-out-alt fa-2x"></i>
+                    <span class="link-text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <section id="landing-page">
+        <div id="landing-bg"></div>
+        <div id="landing-content">
+                <h1 id="landing-title1" class="landing-title">STYLE</h1>
+                <h1 id="landing-title2" class="landing-title">THEORY.</h1>
+                <h2 id="landing-tagline">Walk in for the Fashion, Stay in for the Style</h2>
+                <div id="landing-register" class="rounded-right">
+                        <form id="form-register">
+                            <h1 id="register-title">Register Now!</h1>
+                            <div class="form-group">
+                                <label for="sign-up-email" class="register-label">Email :</label>
+                                <input type="email" class="form-control" id="signup-email" placeholder="fashionismylife@mail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-up-name" class="register-label">Your Name : </label>
+                                <input type="text" class="form-control" id="signup-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-up-password" class="register-label">Password :</label>
+                                <input type="password" class="form-control" id="signup-password">
+                            </div>
+                            <div style="display: flex; flex-direction: row;">
+                                <button type="submit" class="btn btn-warning" style="background-color: rgb(235, 212, 114); border-width: 0; cursor: pointer; margin-left: 0.5rem;">Register</button>
+                                <div class="g-signin2" data-onsuccess="onSignIn" style="display: inline; margin: 0 1rem;">
+                                </div>
+                                <a id="login-btn-signup">Already have an account?</a>
+                            </div>
+                        </form>
+                </div>
+        </div>
+    </section>
+
+    <section id="login-page">
+        <div id="login-form-div">
+            <p id="xlogin" class="x">x</p>
+            <form id="form-login" style="margin: 0 50px 40px 40px;">
+                <h1 id="log-in-title">Log in</h1>
+                <div class="form-group">
+                        <label for="log-in-email" class="register-label">Email: </label>
+                        <input type="text" class="form-control" id="login-email">
+                </div>
+                <div class="form-group">
+                    <label for="log-in-password" class="register-label">Password :</label>
+                    <input type="password" class="form-control" id="login-password">
+                </div>
+                <button type="submit" class="btn btn-warning" style="background-color: rgb(235, 212, 114); border-width: 0; cursor: pointer; margin-left: 0.5rem;">Sign in</button>
+            </form>
+        </div>    
+    </section>
+    <main>
+        <section id="rent">
+            <div id="content-body-rent">
+                
+            </div>
+        </section>
+        <section id="dashboard-home-page">
+            <div id="welcome-back">
+                <p class="welcome-back-child"> Welcome back, <p id="name-home"></p></p>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg" style="width: 5rem;margin-top:2rem" alt="">
+                <p class="hot-picks"> HOT PICKS TODAY: </p>
+            </div>
+            <div id="div-fashion-api" class="carousel slide" data-ride="carousel" style="width: 36%; "> 
+                <div class="loading">
+                        <img src="./img/loading.gif" alt="">
+                </div>
+                <div class="carousel-inner">
+
+                </div>
+                <a class="carousel-control-prev" href="#div-fashion-api" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#div-fashion-api" role="button" data-slide="next" style="z-index: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </section>
+        <section id="my-stuff">
+            
+        </section>
+
+        <section id="my-order">
+
+        </section>
+
+        <section id="form-create-page">
+            <div id="create-form-div">
+                <p id="xcreate" class="x">x</p>
+                <form id="form-create" style="margin: 0 50px 40px 40px;">
+                    <h1 id="create-title">Item Rent</h1>
+                    <div class="form-group">
+                            <label for="name-create">Name :</label>
+                            <input type="text" class="form-control" id="name-create">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price :</label>
+                        <input type="number" class="form-control" id="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="image-create">image :</label>
+                        <input type="file" class="form-control-file" accept="image/*" id="image-create">
+                    </div>
+                    <button type="submit" class="btn btn-warning" style="background-color: silver; border-width: 0; cursor: pointer; margin-left: 0.5rem;">Upload</button>
+                </form>
+            </div>    
+        </section>
+
+        
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./script.js"></script>
+</body>
+</html>
