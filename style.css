@@ -380,7 +380,8 @@ main {
     font-weight: bolder;
     font-size: 2.5rem;
     text-align: center;
-  
+}
+
 .loading {
     position: fixed;
     bottom:40%;
