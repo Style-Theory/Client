@@ -1,11 +1,8 @@
 $("document").ready(() => {
-    let img;
-    $("#form-update-page").hide()
     const token = localStorage.token
     if(!token) {
         $("#login-page").hide()
         $('.navbar1').hide()
-        $("#form-update-page").hide()
         $("#form-create-page").hide()
         $('main').hide()
         $('#rent').hide()
@@ -23,7 +20,6 @@ $("document").ready(() => {
     } else {
         $("#landing-page").css('filter', '')
         $("#form-create-page").hide()
-        $("#form-update-page").hide()
         $('#name-home').empty()
         $('#name-home').append(`${localStorage.name}`)
         $("#dashboard-home-page").show()
@@ -38,7 +34,6 @@ $("document").ready(() => {
 
     $('#btn-navbar-home').on('click', (e) => {
         e.preventDefault()
-        $("#form-update-page").hide()
         $("#dashboard-home-page").show()
         $("#form-create-page").hide()
         $("#my-stuff").empty()
@@ -54,7 +49,6 @@ $("document").ready(() => {
 
     $('#btn-navbar-rent').on('click', (e) => {
         e.preventDefault()
-        $("#form-update-page").hide()
         fetchDress()
         $("#my-stuff").empty()
         $("#my-order").empty()
@@ -69,9 +63,9 @@ $("document").ready(() => {
         $('#landing-page').hide()
     })
 
+  
     $('#btn-navbar-myStuff').on('click', (e) => {
         e.preventDefault()
-        $("#form-update-page").hide()
         $("#my-stuff").empty()
         $("#my-stuff").css('filter', '')
         fetchMyStuff()
@@ -97,9 +91,9 @@ $("document").ready(() => {
         })
     })
     
+
     $('#btn-navbar-myOrder').on('click', (e) => {
         e.preventDefault()
-        $("#form-update-page").hide()
         $("#dashboard-home-page").hide()
         $("#form-create-page").hide()
         $("#my-stuff").empty()
@@ -115,9 +109,10 @@ $("document").ready(() => {
     })
     $('#btn-navbar-logout').on('click', (e) => {
         e.preventDefault()
+        resetLandingPage ()
         $("#my-stuff").empty()
+        signOut()
         $("#content-body-rent").empty()
-        $("#landing-page").css('filter', '')
         localStorage.clear()
         $("#form-create-page").hide()
         $("#login-page").hide()
@@ -227,49 +222,8 @@ $("document").ready(() => {
                 })
             })
     })
-
-    $('input[type=file]').on("change", function() {
-
-        let $files = $(this).get(0).files;
-    
-        if ($files.length) {
-          var apiUrl = 'https://api.imgur.com/3/image';
-          var apiKey = '7122fd47f342787';
-    
-            settings = {
-                async: false,
-                crossDomain: true,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                url: apiUrl,
-                headers: {
-                Authorization: 'Client-ID ' + apiKey,
-                Accept: 'application/json'
-                },
-                mimeType: 'multipart/form-data'
-            };
-    
-        var formData = new FormData();
-        formData.append("image", $files[0]);
-        settings.data = formData;
-          $.ajax(settings).done(function(response) {
-            response = JSON.parse(response)
-            img = response.data.id
-          });
-    
-        }
-    });
-
-    $('#form-create').on('submit', (e) => {
-        e.preventDefault()
-        const name = $('#name-create').val()
-        const price = $('#price-create').val()
-        const image = img
-        createRent({ name, price, image })
-    })
-
 })
+
 
 
 function homeFashionNews(){
@@ -284,7 +238,6 @@ function homeFashionNews(){
         }
     }
     $.ajax(settings).done(function (response) {
-        console.log(response)
         for(let i = 0; i < response.results.length; i++){
             if(i == 1){
                 $(".carousel-inner").append(`<div class="carousel-item active">
@@ -311,54 +264,13 @@ function homeFashionNews(){
     
 }
 
-function createRent(data) {
-    $.ajax({
-        url: 'http://localhost:3000/',
-        method: 'POST',
-        headers: {
-                token: localStorage.token
-        },
-        data: {
-            name: data.name,
-            price: data.price,
-            photos: data.image
-        }
-    })
-    .done(result => {
-        $("#my-stuff").empty()
-        $("#my-stuff").css('filter', '')
-        fetchMyStuff()
-        $("#dashboard-home-page").hide()
-        $("#form-create-page").hide()
-        $('#rent').hide()
-        $('#my-order').hide()
-        $("#my-order").empty()
-        $('#my-stuff').show()
-        $('#rent').hide()
-        $("#login-page").hide()
-        $('.navbar1').show()
-        $("#content-body-rent").empty()
-        $('#landing-page').hide()
-        $("#create-btn").on('click', (e) => {
-            e.preventDefault()
-            $("#form-create-page").slideDown()
-            $("#my-stuff").css('filter', 'blur(3px)')
-        })
-        $("#xcreate").on('click', (e) => {  
-            $("#my-stuff").css('filter', '')
-            $("#form-create-page").slideUp()
-        })
-    })
-    .fail(err => {
-        console.log(err)
-    })
-}
-
-
 function fetchDress(){
     $.ajax({
         url: 'http://localhost:3000/',
         method:'GET',
+        headers:{
+            token: localStorage.getItem('token')
+        }
     })
     .done(results => {
         $("#content-body-rent").append('<h2 id="rent-title"> View All</h2>')
@@ -383,7 +295,6 @@ function fetchDress(){
                         </div>
                     </div>`)
                     $(`#card-${results.data[j].id}`).on('click', () => {
-                        console.log('wlwl')
                         let today = new Date()
                         $.ajax({
                             url:`http://localhost:3000/rent/${results.data[j].id}`,
@@ -412,14 +323,11 @@ function resetDress() {
 }
 
 function fetchMyStuff(){
-    // $.ajax({
-    //     url: 'http://localhost:3000/',
-    //     method:'GET',
-    // })
-    // .done(results => {
-        //SEMENTARA
-        let results = {
-            data : [1,2,3,4,5,6,7,8]
+    $.ajax({
+        url: 'http://localhost:3000/mystuff',
+        method:'GET',
+        headers:{
+            token: localStorage.getItem('token')
         }
     })
     .done(results => {
@@ -454,8 +362,8 @@ function fetchMyStuff(){
                                 <div class="col-md-5">
                                     <div class="card-body my-stuff-desc">
                                         <div>
-                                            <h5 class="card-title">Dress</h5>
-                                            <p class="card-text">harga</p>
+                                            <h5 class="card-title">${results.data[j].name}</h5>
+                                            <p class="card-text">Rp. ${parsePrice(results.data[j].price)}</p>
                                         </div>
                                         <div class="my-stuff-config">
                                             <button type="button" class="btn btn-light btn-my-stuff" id=edit-mystuff-${results.data[j].id}>Edit</button>
@@ -502,7 +410,7 @@ function fetchMyStuff(){
                     }
                 }
             }
-        // })
+        })
 }
 
 function editMyStuff(id){
@@ -567,15 +475,14 @@ function deleteMyStuff(id){
 }
 
 function fetchMyOrder(){
-    // $.ajax({
-    //     url: 'http://localhost:3000/',
-    //     method:'GET',
-    // })
-    // .done(results => {
-        //SEMENTARA
-        let results = {
-            data : [1,2,3,4,5,6,7,8]
+    $.ajax({
+        url: 'http://localhost:3000/myorder',
+        method:'GET',
+        headers:{
+            token: localStorage.getItem('token')
         }
+    })
+    .done(results => {
         $("#my-order").append('<h1 id="my-order-title">My Order</h1>')
                 for(let i = 0; i < results.data.length/3; i++){
                 $("#my-order").append(`<div class="container" style="margin: 0;"><div class="row" style="width:80vw" id="row-my-order-${i}"></div></div>`)
@@ -617,7 +524,7 @@ function fetchMyOrder(){
                     }
                 }
             }
-        // })
+        })
 }
 
 function parsePrice(priceInt){
