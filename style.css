@@ -330,3 +330,9 @@ font-family: 'Raleway', sans-serif;
 #my-stuff-title {
     padding: 2rem;
 }
+
+.loading {
+    position: fixed;
+    bottom:40%;
+    left:20%;
+}
